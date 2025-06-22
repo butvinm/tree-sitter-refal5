@@ -1,0 +1,184 @@
+==================
+Just a function with conditions, returns and block calls
+==================
+
+ProcessRequest {
+  t.Server s.ClientSocketNo
+    , <HttpServer-Ctx t.Server> <HttpServer-Handler t.Server> : t.Ctx t.Handler
+    , <DecodeHttpRequest <ReadRequest s.ClientSocketNo>>
+    : {
+        Success t.Method t.URI t.HttpVersion t.Headers e.Body
+          , <Apply t.Handler t.Ctx t.Method t.URI t.Headers e.Body> : t.NewCtx e.Response
+          , <Socket-Send s.ClientSocketNo e.Response> :
+          , <Socket-Close s.ClientSocketNo> :
+          = <HttpServer-Ctx t.Server t.NewCtx>;
+
+        Fails e.Error
+          , <Socket-Close s.ClientSocketNo> :
+          = <HttpServer-Ctx t.Server t.Ctx>;
+      }
+}
+
+---
+
+(program
+  (function
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        pattern: (pattern
+          (variable
+            type: (type)
+            index: (index))
+          (variable
+            type: (type)
+            index: (index)))
+        conditions: (conditions
+          (condition
+            result: (result
+              (call
+                callee: (callee
+                  (identifier))
+                (result
+                  (variable
+                    type: (type)
+                    index: (index))))
+              (call
+                callee: (callee
+                  (identifier))
+                (result
+                  (variable
+                    type: (type)
+                    index: (index)))))
+            pattern: (pattern
+              (variable
+                type: (type)
+                index: (index))
+              (variable
+                type: (type)
+                index: (index)))))
+        call_block: (call_block
+          result: (result
+            (call
+              callee: (callee
+                (identifier))
+              (result
+                (call
+                  callee: (callee
+                    (identifier))
+                  (result
+                    (variable
+                      type: (type)
+                      index: (index)))))))
+          sentences: (sentences
+            (sentence
+              pattern: (pattern
+                (symbol
+                  (identifier))
+                (variable
+                  type: (type)
+                  index: (index))
+                (variable
+                  type: (type)
+                  index: (index))
+                (variable
+                  type: (type)
+                  index: (index))
+                (variable
+                  type: (type)
+                  index: (index))
+                (variable
+                  type: (type)
+                  index: (index)))
+              conditions: (conditions
+                (condition
+                  result: (result
+                    (call
+                      callee: (callee
+                        (identifier))
+                      (result
+                        (variable
+                          type: (type)
+                          index: (index))
+                        (variable
+                          type: (type)
+                          index: (index))
+                        (variable
+                          type: (type)
+                          index: (index))
+                        (variable
+                          type: (type)
+                          index: (index))
+                        (variable
+                          type: (type)
+                          index: (index))
+                        (variable
+                          type: (type)
+                          index: (index)))))
+                  pattern: (pattern
+                    (variable
+                      type: (type)
+                      index: (index))
+                    (variable
+                      type: (type)
+                      index: (index))))
+                (condition
+                  result: (result
+                    (call
+                      callee: (callee
+                        (identifier))
+                      (result
+                        (variable
+                          type: (type)
+                          index: (index))
+                        (variable
+                          type: (type)
+                          index: (index))))))
+                (condition
+                  result: (result
+                    (call
+                      callee: (callee
+                        (identifier))
+                      (result
+                        (variable
+                          type: (type)
+                          index: (index)))))))
+              return: (result
+                (call
+                  callee: (callee
+                    (identifier))
+                  (result
+                    (variable
+                      type: (type)
+                      index: (index))
+                    (variable
+                      type: (type)
+                      index: (index))))))
+            (sentence
+              pattern: (pattern
+                (symbol
+                  (identifier))
+                (variable
+                  type: (type)
+                  index: (index)))
+              conditions: (conditions
+                (condition
+                  result: (result
+                    (call
+                      callee: (callee
+                        (identifier))
+                      (result
+                        (variable
+                          type: (type)
+                          index: (index)))))))
+              return: (result
+                (call
+                  callee: (callee
+                    (identifier))
+                  (result
+                    (variable
+                      type: (type)
+                      index: (index))
+                    (variable
+                      type: (type)
+                      index: (index))))))))))))

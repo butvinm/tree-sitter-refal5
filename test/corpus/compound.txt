@@ -1,0 +1,17 @@
+==================
+Compound symbols
+==================
+
+$ENTRY GO { = ":-)" }
+
+---
+
+(program
+  (function
+    scope: (entry_directive)
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        return: (result
+          (symbol
+            (compound)))))))

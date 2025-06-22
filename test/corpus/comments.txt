@@ -1,0 +1,31 @@
+==================
+Block, inline and special comments
+==================
+
+/* Multiline
+Block comment
+*/
+
+$ENTRY GO {
+  /* block comment inside pattern */ = /* block comment inside result */;
+}
+
+* Inline comment
+*Another Inline comment
+
+*$FROM Special Comment
+
+---
+
+(program
+  (block_comment)
+  (function
+    scope: (entry_directive)
+    name: (identifier)
+    (block_comment)
+    sentences: (sentences
+      (sentence)
+      (block_comment)))
+  (line_comment)
+  (line_comment)
+  (special_comment))

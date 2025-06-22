@@ -1,0 +1,37 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "refal5",
+      "camelcase": "Refal5",
+      "title": "Refal5",
+      "scope": "source.refal5",
+      "file-types": ["ref"],
+      "injection-regex": "^refal5$",
+      "class-name": "TreeSitterRefal5"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Refal5 grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Mikhail Butvin",
+        "email": "butvin.mihail@yandex.ru"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/butvinm/tree-sitter-refal5"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

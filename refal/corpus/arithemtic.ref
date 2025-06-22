@@ -1,0 +1,5 @@
+
+
+$ENTRY GO {
+    s. A = <Mu s.A>
+}

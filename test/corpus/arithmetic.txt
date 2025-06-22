@@ -1,0 +1,52 @@
+==================
+Arithmetic functions
+==================
+
+$ENTRY GO {
+  = <+ 123456789 4171510507>
+    <- 300000000 3000000000>
+    </ 300000000 (1 1705032704)>
+    <* 65536 65536>;
+}
+
+---
+
+(program
+  (function
+    scope: (entry_directive)
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        return: (result
+          (call
+            callee: (callee)
+            (result
+              (symbol
+                (macrodigit))
+              (symbol
+                (macrodigit))))
+          (call
+            callee: (callee)
+            (result
+              (symbol
+                (macrodigit))
+              (symbol
+                (macrodigit))))
+          (call
+            callee: (callee)
+            (result
+              (symbol
+                (macrodigit))
+              (brackets
+                (result
+                  (symbol
+                    (macrodigit))
+                  (symbol
+                    (macrodigit))))))
+          (call
+            callee: (callee)
+            (result
+              (symbol
+                (macrodigit))
+              (symbol
+                (macrodigit)))))))))

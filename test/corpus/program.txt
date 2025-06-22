@@ -1,0 +1,89 @@
+==================
+Program with a few functions and extern declarations
+==================
+
+*$FROM expr
+$EXTERN Parse;
+
+$ENTRY Go {
+  /* пусто */
+    = <Test 'n*(n+n)$'>
+      <Test 'n(n+n)$'>
+      <Test 'n*(n+$'>
+      <Test '+(n+n)$'>
+      <Test '$'>
+}
+
+Test {
+  e.Text = <Prout e.Text ': ' <Parse e.Text>>
+}
+
+---
+
+(program
+  (special_comment)
+  (extern
+    (extern_directive)
+    (identifier))
+  (function
+    scope: (entry_directive)
+    name: (identifier)
+    (block_comment)
+    sentences: (sentences
+      (sentence
+        return: (result
+          (call
+            callee: (callee
+              (identifier))
+            (result
+              (symbol
+                (chars))))
+          (call
+            callee: (callee
+              (identifier))
+            (result
+              (symbol
+                (chars))))
+          (call
+            callee: (callee
+              (identifier))
+            (result
+              (symbol
+                (chars))))
+          (call
+            callee: (callee
+              (identifier))
+            (result
+              (symbol
+                (chars))))
+          (call
+            callee: (callee
+              (identifier))
+            (result
+              (symbol
+                (chars))))))))
+  (function
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        pattern: (pattern
+          (variable
+            type: (type)
+            index: (index)))
+        return: (result
+          (call
+            callee: (callee
+              (identifier))
+            (result
+              (variable
+                type: (type)
+                index: (index))
+              (symbol
+                (chars))
+              (call
+                callee: (callee
+                  (identifier))
+                (result
+                  (variable
+                    type: (type)
+                    index: (index)))))))))))

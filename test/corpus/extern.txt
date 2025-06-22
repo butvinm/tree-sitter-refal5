@@ -1,0 +1,22 @@
+==================
+Extern declarations and special comments
+==================
+
+*$FROM LibraryEx
+$EXTERN ArgList;
+
+*$FROM R5FW-Parser
+$EXTERN Parse, Scan;
+
+---
+
+(program
+  (special_comment)
+  (extern
+    (extern_directive)
+    (identifier))
+  (special_comment)
+  (extern
+    (extern_directive)
+    (identifier)
+    (identifier)))
