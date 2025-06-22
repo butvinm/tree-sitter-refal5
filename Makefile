@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-refal5
 HOMEPAGE_URL := https://github.com/butvinm/tree-sitter-refal5
-VERSION := 0.1.0
+VERSION := 0.1.1
 
 # repository
 SRC_DIR := src
