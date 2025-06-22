@@ -10,7 +10,7 @@
 const sep1 = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 
 module.exports = grammar({
-  name: "refal",
+  name: "refal5",
 
   externals: ($) => [$.special_comment, $.line_comment],
 
