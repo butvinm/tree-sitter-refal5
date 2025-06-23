@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-refal5"
 description = "Refal5 grammar for tree-sitter"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Mikhail Butvin <butvin.mihail@yandex.ru>"]
 license = "MIT"
 readme = "README.md"
