@@ -88,7 +88,7 @@ module.exports = grammar({
     macrodigit: ($) => /[0-9]+/,
     chars: ($) => /'([^'\\]|\\.)*'/,
 
-    block_comment: ($) => /\/\*[^\*]*\*\//,
+    block_comment: ($) => token(seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")),
 
     // TODO: make a token for all directives,
     // including directives inside special comments, so we can highlight them in the unified way

@@ -579,8 +579,24 @@
       "value": "'([^'\\\\]|\\\\.)*'"
     },
     "block_comment": {
-      "type": "PATTERN",
-      "value": "\\/\\*[^\\*]*\\*\\/"
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "/*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
+          },
+          {
+            "type": "STRING",
+            "value": "/"
+          }
+        ]
+      }
     },
     "extern_directive": {
       "type": "CHOICE",

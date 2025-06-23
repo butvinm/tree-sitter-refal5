@@ -6,6 +6,14 @@ Block, inline and special comments
 Block comment
 */
 
+/*
+  * Asterisk inside block comment
+*/
+
+/*
+* Line comment inside block comment
+*/
+
 $ENTRY GO {
   /* block comment inside pattern */ = /* block comment inside result */;
 }
@@ -18,6 +26,8 @@ $ENTRY GO {
 ---
 
 (program
+  (block_comment)
+  (block_comment)
   (block_comment)
   (function
     scope: (entry_directive)

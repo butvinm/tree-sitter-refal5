@@ -643,14 +643,16 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead != 0) ADVANCE(2);
       END_STATE();
     case 3:
-      if (lookahead == '*') ADVANCE(4);
+      if (lookahead == '*') ADVANCE(5);
       END_STATE();
     case 4:
-      if (lookahead == '*') ADVANCE(5);
-      if (lookahead != 0) ADVANCE(4);
+      if (lookahead == '*') ADVANCE(4);
+      if (lookahead == '/') ADVANCE(42);
+      if (lookahead != 0) ADVANCE(5);
       END_STATE();
     case 5:
-      if (lookahead == '/') ADVANCE(42);
+      if (lookahead == '*') ADVANCE(4);
+      if (lookahead != 0) ADVANCE(5);
       END_STATE();
     case 6:
       if (lookahead == '/') ADVANCE(3);
@@ -777,7 +779,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 34:
       ACCEPT_TOKEN(aux_sym_callee_token1);
-      if (lookahead == '*') ADVANCE(4);
+      if (lookahead == '*') ADVANCE(5);
       END_STATE();
     case 35:
       ACCEPT_TOKEN(anon_sym_DOT);
@@ -2703,7 +2705,7 @@ TS_PUBLIC const TSLanguage *tree_sitter_refal5(void) {
     .metadata = {
       .major_version = 0,
       .minor_version = 1,
-      .patch_version = 0,
+      .patch_version = 1,
     },
   };
   return &language;
