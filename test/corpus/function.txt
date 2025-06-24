@@ -143,17 +143,18 @@ ProcessRequest {
                         (variable
                           type: (type)
                           index: (index)))))))
-              return: (result
-                (call
-                  callee: (callee
-                    (identifier))
-                  (result
-                    (variable
-                      type: (type)
-                      index: (index))
-                    (variable
-                      type: (type)
-                      index: (index))))))
+              return: (return
+                result: (result
+                  (call
+                    callee: (callee
+                      (identifier))
+                    (result
+                      (variable
+                        type: (type)
+                        index: (index))
+                      (variable
+                        type: (type)
+                        index: (index)))))))
             (sentence
               pattern: (pattern
                 (symbol
@@ -171,14 +172,15 @@ ProcessRequest {
                         (variable
                           type: (type)
                           index: (index)))))))
-              return: (result
-                (call
-                  callee: (callee
-                    (identifier))
-                  (result
-                    (variable
-                      type: (type)
-                      index: (index))
-                    (variable
-                      type: (type)
-                      index: (index))))))))))))
+              return: (return
+                result: (result
+                  (call
+                    callee: (callee
+                      (identifier))
+                    (result
+                      (variable
+                        type: (type)
+                        index: (index))
+                      (variable
+                        type: (type)
+                        index: (index)))))))))))))

@@ -21,17 +21,18 @@ Test {
 ---
 
 (program
-  (special_comment)
-  (extern
-    (extern_directive)
-    (identifier))
-  (function
-    scope: (entry_directive)
-    name: (identifier)
-    (block_comment)
-    sentences: (sentences
-      (sentence
-        return: (result
+(special_comment)
+(extern
+  (extern_directive)
+  (identifier))
+(function
+  scope: (entry_directive)
+  name: (identifier)
+  (block_comment)
+  sentences: (sentences
+    (sentence
+      return: (return
+        result: (result
           (call
             callee: (callee
               (identifier))
@@ -61,16 +62,17 @@ Test {
               (identifier))
             (result
               (symbol
-                (chars))))))))
-  (function
-    name: (identifier)
-    sentences: (sentences
-      (sentence
-        pattern: (pattern
-          (variable
-            type: (type)
-            index: (index)))
-        return: (result
+                (chars)))))))))
+(function
+  name: (identifier)
+  sentences: (sentences
+    (sentence
+      pattern: (pattern
+        (variable
+          type: (type)
+          index: (index)))
+      return: (return
+        result: (result
           (call
             callee: (callee
               (identifier))
@@ -86,4 +88,4 @@ Test {
                 (result
                   (variable
                     type: (type)
-                    index: (index)))))))))))
+                    index: (index))))))))))))

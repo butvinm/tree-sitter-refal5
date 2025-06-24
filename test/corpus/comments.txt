@@ -24,7 +24,6 @@ $ENTRY GO {
 *$FROM Special Comment
 
 ---
-
 (program
   (block_comment)
   (block_comment)
@@ -34,7 +33,8 @@ $ENTRY GO {
     name: (identifier)
     (block_comment)
     sentences: (sentences
-      (sentence)
+      (sentence
+        return: (return))
       (block_comment)))
   (line_comment)
   (line_comment)

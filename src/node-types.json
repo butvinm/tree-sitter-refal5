@@ -257,6 +257,22 @@
     }
   },
   {
+    "type": "return",
+    "named": true,
+    "fields": {
+      "result": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "result",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "sentence",
     "named": true,
     "fields": {
@@ -295,7 +311,7 @@
         "required": false,
         "types": [
           {
-            "type": "result",
+            "type": "return",
             "named": true
           }
         ]

@@ -43,10 +43,7 @@ module.exports = grammar({
       seq(
         field("pattern", optional($.pattern)),
         field("conditions", optional($.conditions)),
-        choice(
-          seq("=", field("return", optional($.result))),
-          seq(",", field("call_block", $.call_block)),
-        ),
+        choice(field("return", $.return), field("call_block", $.call_block)),
       ),
 
     conditions: ($) => repeat1($.condition),
@@ -59,8 +56,11 @@ module.exports = grammar({
         field("pattern", optional($.pattern)),
       ),
 
+    return: ($) => seq("=", field("result", optional($.result))),
+
     call_block: ($) =>
       seq(
+        ",",
         field("result", optional($.result)),
         ":",
         "{",

@@ -17,36 +17,37 @@ $ENTRY GO {
     name: (identifier)
     sentences: (sentences
       (sentence
-        return: (result
-          (call
-            callee: (callee)
-            (result
-              (symbol
-                (macrodigit))
-              (symbol
-                (macrodigit))))
-          (call
-            callee: (callee)
-            (result
-              (symbol
-                (macrodigit))
-              (symbol
-                (macrodigit))))
-          (call
-            callee: (callee)
-            (result
-              (symbol
-                (macrodigit))
-              (brackets
-                (result
-                  (symbol
-                    (macrodigit))
-                  (symbol
-                    (macrodigit))))))
-          (call
-            callee: (callee)
-            (result
-              (symbol
-                (macrodigit))
-              (symbol
-                (macrodigit)))))))))
+        return: (return
+          result: (result
+            (call
+              callee: (callee)
+              (result
+                (symbol
+                  (macrodigit))
+                (symbol
+                  (macrodigit))))
+            (call
+              callee: (callee)
+              (result
+                (symbol
+                  (macrodigit))
+                (symbol
+                  (macrodigit))))
+            (call
+              callee: (callee)
+              (result
+                (symbol
+                  (macrodigit))
+                (brackets
+                  (result
+                    (symbol
+                      (macrodigit))
+                    (symbol
+                      (macrodigit))))))
+            (call
+              callee: (callee)
+              (result
+                (symbol
+                  (macrodigit))
+                (symbol
+                  (macrodigit))))))))))

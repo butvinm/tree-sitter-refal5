@@ -12,6 +12,7 @@ $ENTRY GO { = ":-)" }
     name: (identifier)
     sentences: (sentences
       (sentence
-        return: (result
-          (symbol
-            (compound)))))))
+        return: (return
+          result: (result
+            (symbol
+              (compound))))))))
