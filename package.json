@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-refal5",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Refal5 grammar for tree-sitter",
   "repository": "https://github.com/butvinm/tree-sitter-refal5",
   "license": "MIT",
