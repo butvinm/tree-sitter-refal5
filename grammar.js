@@ -39,12 +39,20 @@ module.exports = grammar({
 
     sentences: ($) => seq(sep1($.sentence, ";"), optional(";")),
 
+    // The return or call block is optional, so a sentence being typed parses without errors
     sentence: ($) =>
-      seq(
-        field("pattern", optional($.pattern)),
-        field("conditions", optional($.conditions)),
-        choice(field("return", $.return), field("call_block", $.call_block)),
+      choice(
+        seq(
+          field("pattern", $.pattern),
+          field("conditions", optional($.conditions)),
+          optional($._tail),
+        ),
+        seq(field("conditions", $.conditions), optional($._tail)),
+        $._tail,
       ),
+
+    _tail: ($) =>
+      choice(field("return", $.return), field("call_block", $.call_block)),
 
     conditions: ($) => repeat1($.condition),
 
