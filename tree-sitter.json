@@ -8,7 +8,8 @@
       "scope": "source.refal5",
       "file-types": ["ref"],
       "injection-regex": "^refal5$",
-      "class-name": "TreeSitterRefal5"
+      "class-name": "TreeSitterRefal5",
+      "highlights": ["queries/highlights.scm"]
     }
   ],
   "metadata": {
