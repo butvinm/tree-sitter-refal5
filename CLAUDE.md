@@ -9,8 +9,9 @@ A tree-sitter grammar for Refal-5. Its main user is the Zed extension https://gi
 ## Commands
 
 - `tree-sitter generate`: regenerate `src/parser.c`, `src/grammar.json`, `src/node-types.json` and `src/tree_sitter/*.h` from `grammar.js`. Commit them together with the grammar change and never edit them by hand. A newer tree-sitter CLI also changes these files without any grammar change, so put such a regeneration in its own commit.
-- `tree-sitter test`: run the corpus tests in `test/corpus/*.txt`. `tree-sitter test --include 'regex'` runs the tests whose name matches.
+- `tree-sitter test`: run the corpus tests in `test/corpus/*.txt` and the highlight tests in `test/highlight/`. `tree-sitter test --include 'regex'` runs the corpus tests whose name matches.
 - `tree-sitter parse file.ref`: print the tree. Parse problems show up as ERROR and MISSING nodes.
+- `tree-sitter highlight file.ref`: print the file colored by `queries/highlights.scm`.
 - `tree-sitter build --wasm --output /tmp/refal5.wasm`: check that the grammar compiles to WebAssembly, which is how Zed builds it.
 
 `tree-sitter test --update` rewrites every corpus file, including whitespace changes to tests that did not fail. Restore the unrelated files before committing, or write new expected trees by hand.
@@ -23,6 +24,12 @@ A tree-sitter grammar for Refal-5. Its main user is the Zed extension https://gi
 - `type`, the `s`, `t` or `e` of a variable, only when directly followed by `.`. Otherwise these letters are identifiers, as in `(e 'u_')`.
 
 Refal-5 token rules follow the lexer of the Refal-05 compiler, `R5FW-Parser.ref` in refal-5-framework. For example, an escape sequence outside quotes such as `\n` or `\x42` is a single character, parsed as `escape`.
+
+## Highlights query
+
+`queries/highlights.scm`, registered in `tree-sitter.json`, is used by the tree-sitter CLI and other tools that read a grammar's own queries. Zed ignores it and loads `languages/refal5/highlights.scm` from zed-refal5, so keep the two files identical when changing either.
+
+Highlight tests in `test/highlight/` are Refal files with assertion comments. Refal line comments must start at column 0, so use `* <- capture` for a token at column 0 and `*    ^ capture` with the `^` under the token's column otherwise. A negated assertion like `^ !type` fails on a token with no highlight at all, so assert only captures that exist.
 
 ## Unfinished code
 
