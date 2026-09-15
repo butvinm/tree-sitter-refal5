@@ -350,6 +350,10 @@
           "named": true
         },
         {
+          "type": "escape",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -449,6 +453,10 @@
   },
   {
     "type": "entry_directive",
+    "named": true
+  },
+  {
+    "type": "escape",
     "named": true
   },
   {

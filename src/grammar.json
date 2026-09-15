@@ -183,60 +183,98 @@
       ]
     },
     "sentence": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "FIELD",
-          "name": "pattern",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "pattern"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        },
-        {
-          "type": "FIELD",
-          "name": "conditions",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "conditions"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        },
-        {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
               "type": "FIELD",
-              "name": "return",
+              "name": "pattern",
               "content": {
                 "type": "SYMBOL",
-                "name": "return"
+                "name": "pattern"
               }
             },
             {
               "type": "FIELD",
-              "name": "call_block",
+              "name": "conditions",
               "content": {
-                "type": "SYMBOL",
-                "name": "call_block"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "conditions"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
               }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_tail"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "conditions",
+              "content": {
+                "type": "SYMBOL",
+                "name": "conditions"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_tail"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_tail"
+        }
+      ]
+    },
+    "_tail": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "return",
+          "content": {
+            "type": "SYMBOL",
+            "name": "return"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "call_block",
+          "content": {
+            "type": "SYMBOL",
+            "name": "call_block"
+          }
         }
       ]
     },
@@ -503,6 +541,10 @@
         {
           "type": "SYMBOL",
           "name": "compound"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "escape"
         }
       ]
     },
@@ -534,30 +576,6 @@
         }
       ]
     },
-    "type": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "s"
-            },
-            {
-              "type": "STRING",
-              "value": "t"
-            },
-            {
-              "type": "STRING",
-              "value": "e"
-            }
-          ]
-        }
-      }
-    },
     "index": {
       "type": "IMMEDIATE_TOKEN",
       "content": {
@@ -580,6 +598,10 @@
     "chars": {
       "type": "PATTERN",
       "value": "'([^'\\\\]|\\\\.)*'"
+    },
+    "escape": {
+      "type": "PATTERN",
+      "value": "\\\\(x[0-9A-Fa-f]{2}|['\"\\\\ntr<>()])"
     },
     "block_comment": {
       "type": "TOKEN",
@@ -651,6 +673,10 @@
     {
       "type": "SYMBOL",
       "name": "line_comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "type"
     }
   ],
   "inline": [],

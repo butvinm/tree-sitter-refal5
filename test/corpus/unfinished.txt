@@ -1,0 +1,54 @@
+==================
+Sentence without a return or call block yet
+==================
+
+Parse {
+  e.Content
+}
+
+---
+
+(program
+  (function
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        pattern: (pattern
+          (variable
+            type: (type)
+            index: (index)))))))
+
+==================
+Sentence with a condition but without a return yet
+==================
+
+Parse {
+  e.Content
+    , <Parse-Ws e.Content> : e.Rest
+}
+
+---
+
+(program
+  (function
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        pattern: (pattern
+          (variable
+            type: (type)
+            index: (index)))
+        conditions: (conditions
+          (condition
+            result: (result
+              (call
+                callee: (callee
+                  (identifier))
+                (result
+                  (variable
+                    type: (type)
+                    index: (index)))))
+            pattern: (pattern
+              (variable
+                type: (type)
+                index: (index)))))))))

@@ -12,7 +12,7 @@ const sep1 = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 module.exports = grammar({
   name: "refal5",
 
-  externals: ($) => [$.special_comment, $.line_comment],
+  externals: ($) => [$.special_comment, $.line_comment, $.type],
 
   extras: ($) => [/\s/, $.block_comment, $.line_comment],
 
@@ -39,12 +39,20 @@ module.exports = grammar({
 
     sentences: ($) => seq(sep1($.sentence, ";"), optional(";")),
 
+    // The return or call block is optional, so a sentence being typed parses without errors
     sentence: ($) =>
-      seq(
-        field("pattern", optional($.pattern)),
-        field("conditions", optional($.conditions)),
-        choice(field("return", $.return), field("call_block", $.call_block)),
+      choice(
+        seq(
+          field("pattern", $.pattern),
+          field("conditions", optional($.conditions)),
+          optional($._tail),
+        ),
+        seq(field("conditions", $.conditions), optional($._tail)),
+        $._tail,
       ),
+
+    _tail: ($) =>
+      choice(field("return", $.return), field("call_block", $.call_block)),
 
     conditions: ($) => repeat1($.condition),
 
@@ -76,17 +84,18 @@ module.exports = grammar({
 
     callee: ($) => choice(/[%*+\-/?]/, $.identifier),
 
-    symbol: ($) => choice($.identifier, $.macrodigit, $.chars, $.compound),
+    symbol: ($) =>
+      choice($.identifier, $.macrodigit, $.chars, $.compound, $.escape),
     variable: ($) =>
       seq(field("type", $.type), token.immediate("."), field("index", $.index)),
 
-    type: ($) => token(prec(1, choice("s", "t", "e"))),
     index: ($) => token.immediate(/([a-zA-Z_][a-zA-Z0-9_-]*)|([0-9]+)/), // identifier or macrodigit
 
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_-]*/,
     compound: ($) => /"([^"\\]|\\.)*"/,
     macrodigit: ($) => /[0-9]+/,
     chars: ($) => /'([^'\\]|\\.)*'/,
+    escape: ($) => /\\(x[0-9A-Fa-f]{2}|['"\\ntr<>()])/, // a single character outside quotes
 
     block_comment: ($) => token(seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")),
 
