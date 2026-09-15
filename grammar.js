@@ -56,12 +56,12 @@ module.exports = grammar({
 
     conditions: ($) => repeat1($.condition),
 
+    // The `:` part is optional, so a condition being typed parses without errors
     condition: ($) =>
       seq(
         ",",
         field("result", optional($.result)),
-        ":",
-        field("pattern", optional($.pattern)),
+        optional(seq(":", field("pattern", optional($.pattern)))),
       ),
 
     return: ($) => seq("=", field("result", optional($.result))),

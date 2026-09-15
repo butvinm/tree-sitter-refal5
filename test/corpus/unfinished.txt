@@ -52,3 +52,56 @@ Parse {
               (variable
                 type: (type)
                 index: (index)))))))))
+
+==================
+Condition with only a comma yet
+==================
+
+SwEvalFile {
+  Success
+    ,
+}
+
+---
+
+(program
+  (function
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        pattern: (pattern
+          (symbol
+            (identifier)))
+        conditions: (conditions
+          (condition))))))
+
+==================
+Condition without a colon yet
+==================
+
+Parse {
+  e.Content
+    , <Parse-Ws e.Content>
+}
+
+---
+
+(program
+  (function
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        pattern: (pattern
+          (variable
+            type: (type)
+            index: (index)))
+        conditions: (conditions
+          (condition
+            result: (result
+              (call
+                callee: (callee
+                  (identifier))
+                (result
+                  (variable
+                    type: (type)
+                    index: (index)))))))))))
