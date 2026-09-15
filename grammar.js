@@ -76,7 +76,8 @@ module.exports = grammar({
 
     callee: ($) => choice(/[%*+\-/?]/, $.identifier),
 
-    symbol: ($) => choice($.identifier, $.macrodigit, $.chars, $.compound),
+    symbol: ($) =>
+      choice($.identifier, $.macrodigit, $.chars, $.compound, $.escape),
     variable: ($) =>
       seq(field("type", $.type), token.immediate("."), field("index", $.index)),
 
@@ -86,6 +87,7 @@ module.exports = grammar({
     compound: ($) => /"([^"\\]|\\.)*"/,
     macrodigit: ($) => /[0-9]+/,
     chars: ($) => /'([^'\\]|\\.)*'/,
+    escape: ($) => /\\(x[0-9A-Fa-f]{2}|['"\\ntr<>()])/, // a single character outside quotes
 
     block_comment: ($) => token(seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")),
 

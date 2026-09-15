@@ -503,6 +503,10 @@
         {
           "type": "SYMBOL",
           "name": "compound"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "escape"
         }
       ]
     },
@@ -556,6 +560,10 @@
     "chars": {
       "type": "PATTERN",
       "value": "'([^'\\\\]|\\\\.)*'"
+    },
+    "escape": {
+      "type": "PATTERN",
+      "value": "\\\\(x[0-9A-Fa-f]{2}|['\"\\\\ntr<>()])"
     },
     "block_comment": {
       "type": "TOKEN",

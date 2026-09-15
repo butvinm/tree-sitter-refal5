@@ -53,3 +53,52 @@ EscapeNameChar {
                 (variable
                   type: (type)
                   index: (index))))))))))
+
+==================
+Escape sequences outside quotes
+==================
+
+$ENTRY Go {
+  = (\x42\n\t\r\\\'\"\<\>\(\)) 'B' \x0A '"<>()';
+}
+
+---
+
+(program
+  (function
+    scope: (entry_directive)
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        return: (return
+          result: (result
+            (brackets
+              (result
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))
+                (symbol
+                  (escape))))
+            (symbol
+              (chars))
+            (symbol
+              (escape))
+            (symbol
+              (chars))))))))
