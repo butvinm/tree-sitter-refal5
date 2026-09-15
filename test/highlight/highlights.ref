@@ -1,0 +1,35 @@
+*$FROM LibraryEx
+* <- comment
+$EXTERN ArgList, Prout;
+* <- keyword
+
+/* Doc comment */
+* <- comment
+$ENTRY Go {
+* <- keyword
+*      ^ function
+  e.Arg = <Prout 'text' "compound" \n 42>;
+* ^ type
+*  ^ punctuation.delimiter
+*   ^ variable
+*       ^ operator
+*         ^ punctuation.bracket
+*          ^ function
+*                ^ string
+*                       ^ string
+*                                  ^ string.escape
+*                                     ^ number
+*                                       ^ punctuation.bracket
+*                                        ^ punctuation.delimiter
+}
+* <- punctuation.bracket
+
+F {
+* <- function
+  , <G> : s.X = (e s.X);
+* ^ operator
+*       ^ operator
+*             ^ operator
+*               ^ punctuation.bracket
+*                  ^ type
+}
