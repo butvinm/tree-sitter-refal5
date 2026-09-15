@@ -534,30 +534,6 @@
         }
       ]
     },
-    "type": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "s"
-            },
-            {
-              "type": "STRING",
-              "value": "t"
-            },
-            {
-              "type": "STRING",
-              "value": "e"
-            }
-          ]
-        }
-      }
-    },
     "index": {
       "type": "IMMEDIATE_TOKEN",
       "content": {
@@ -651,6 +627,10 @@
     {
       "type": "SYMBOL",
       "name": "line_comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "type"
     }
   ],
   "inline": [],

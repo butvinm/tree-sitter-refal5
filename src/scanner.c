@@ -6,6 +6,7 @@
 enum TokenType {
     SPECIAL_COMMENT, // Line staring with "*$"
     LINE_COMMENT, // Line starting with "*"
+    TYPE, // Variable type "s", "t" or "e" directly followed by "."
 };
 
 void* tree_sitter_refal5_external_scanner_create() { return NULL; }
@@ -17,6 +18,22 @@ void tree_sitter_refal5_external_scanner_deserialize(void* p, const char* b, uns
 bool tree_sitter_refal5_external_scanner_scan(void* payload, TSLexer* lexer, const bool* valid_symbols) {
     while (iswspace(lexer->lookahead)) {
         lexer->advance(lexer, true);
+    }
+
+    // Needs lookahead for ".", otherwise symbols like "e" in "(e 'x')" are taken for a variable type
+    if (
+        valid_symbols[TYPE]
+        && (lexer->lookahead == 's' || lexer->lookahead == 't' || lexer->lookahead == 'e')
+    ) {
+        lexer->advance(lexer, false);
+        lexer->mark_end(lexer);
+
+        if (lexer->lookahead == '.') {
+            lexer->result_symbol = TYPE;
+            return true;
+        }
+
+        return false;
     }
 
     bool at_effective_line_start = lexer->get_column(lexer) == 0;

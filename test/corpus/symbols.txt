@@ -1,0 +1,55 @@
+==================
+Single-letter identifiers s, t and e
+==================
+
+EscapeNameChar {
+  '_' = (e 'u_');
+  s.X = (s s.X) (t t.X) (e e.X);
+}
+
+---
+
+(program
+  (function
+    name: (identifier)
+    sentences: (sentences
+      (sentence
+        pattern: (pattern
+          (symbol
+            (chars)))
+        return: (return
+          result: (result
+            (brackets
+              (result
+                (symbol
+                  (identifier))
+                (symbol
+                  (chars)))))))
+      (sentence
+        pattern: (pattern
+          (variable
+            type: (type)
+            index: (index)))
+        return: (return
+          result: (result
+            (brackets
+              (result
+                (symbol
+                  (identifier))
+                (variable
+                  type: (type)
+                  index: (index))))
+            (brackets
+              (result
+                (symbol
+                  (identifier))
+                (variable
+                  type: (type)
+                  index: (index))))
+            (brackets
+              (result
+                (symbol
+                  (identifier))
+                (variable
+                  type: (type)
+                  index: (index))))))))))

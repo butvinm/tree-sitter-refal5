@@ -12,7 +12,7 @@ const sep1 = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 module.exports = grammar({
   name: "refal5",
 
-  externals: ($) => [$.special_comment, $.line_comment],
+  externals: ($) => [$.special_comment, $.line_comment, $.type],
 
   extras: ($) => [/\s/, $.block_comment, $.line_comment],
 
@@ -80,7 +80,6 @@ module.exports = grammar({
     variable: ($) =>
       seq(field("type", $.type), token.immediate("."), field("index", $.index)),
 
-    type: ($) => token(prec(1, choice("s", "t", "e"))),
     index: ($) => token.immediate(/([a-zA-Z_][a-zA-Z0-9_-]*)|([0-9]+)/), // identifier or macrodigit
 
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_-]*/,
